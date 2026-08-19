@@ -1,0 +1,82 @@
+{
+  "name": "Warzone",
+  "emulation": "xbox360",
+  "lightbar": [255, 40, 70],
+  "player_led": 1,
+  "mute_led": false,
+  "buttons": {
+    "cross": "a",
+    "circle": "b",
+    "square": "x",
+    "triangle": "y",
+    "l1": "lb",
+    "r1": "rb",
+    "l2": "lt",
+    "r2": "rt",
+    "l3": "ls",
+    "r3": "rs",
+    "create": "back",
+    "options": "start",
+    "dpad_up": "dup",
+    "dpad_down": "ddown",
+    "dpad_left": "dleft",
+    "dpad_right": "dright",
+    "ps": "guide",
+    "touchpad": "back",
+    "mute": "none",
+    "fn_l": "none",
+    "fn_r": "none",
+    "paddle_l": "b",
+    "paddle_r": "a"
+  },
+  "left_stick": {
+    "deadzone_inner": 0.04,
+    "deadzone_outer": 0.99,
+    "anti_deadzone": 0.16,
+    "curve": "aggressive",
+    "curve_exp": 1.35,
+    "invert_x": false,
+    "invert_y": false,
+    "scale_x": 1.0,
+    "scale_y": 1.0
+  },
+  "right_stick": {
+    "deadzone_inner": 0.03,
+    "deadzone_outer": 0.99,
+    "anti_deadzone": 0.14,
+    "curve": "linear",
+    "curve_exp": 1.2,
+    "invert_x": false,
+    "invert_y": false,
+    "scale_x": 1.0,
+    "scale_y": 1.0
+  },
+  "left_trigger": {
+    "deadzone": 0.02,
+    "hair": 0.12,
+    "analog": true,
+    "effect": "Resistance",
+    "effect_params": [0, 3]
+  },
+  "right_trigger": {
+    "deadzone": 0.02,
+    "hair": 0.10,
+    "analog": true,
+    "effect": "SemiAutomaticGun",
+    "effect_params": [2, 6, 4]
+  },
+  "gyro": {
+    "mode": "off",
+    "activation": "l2",
+    "sensitivity": 1.2,
+    "yaw_scale": 1.0,
+    "pitch_scale": 0.85,
+    "invert_x": false,
+    "invert_y": false,
+    "smoothing": 0.18,
+    "min_delta": 0.5
+  },
+  "rumble_scale": 0.7,
+  "fn_switches_profiles": true,
+  "pass_fn_to_game": false
+}

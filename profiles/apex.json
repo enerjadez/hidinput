@@ -1,0 +1,82 @@
+{
+  "name": "Apex",
+  "emulation": "xbox360",
+  "lightbar": [255, 90, 20],
+  "player_led": 2,
+  "mute_led": false,
+  "buttons": {
+    "cross": "a",
+    "circle": "b",
+    "square": "x",
+    "triangle": "y",
+    "l1": "lb",
+    "r1": "rb",
+    "l2": "lt",
+    "r2": "rt",
+    "l3": "ls",
+    "r3": "rs",
+    "create": "back",
+    "options": "start",
+    "dpad_up": "dup",
+    "dpad_down": "ddown",
+    "dpad_left": "dleft",
+    "dpad_right": "dright",
+    "ps": "guide",
+    "touchpad": "back",
+    "mute": "none",
+    "fn_l": "none",
+    "fn_r": "none",
+    "paddle_l": "a",
+    "paddle_r": "b"
+  },
+  "left_stick": {
+    "deadzone_inner": 0.05,
+    "deadzone_outer": 1.0,
+    "anti_deadzone": 0.08,
+    "curve": "smooth",
+    "curve_exp": 1.3,
+    "invert_x": false,
+    "invert_y": false,
+    "scale_x": 1.0,
+    "scale_y": 1.0
+  },
+  "right_stick": {
+    "deadzone_inner": 0.03,
+    "deadzone_outer": 1.0,
+    "anti_deadzone": 0.06,
+    "curve": "linear",
+    "curve_exp": 1.2,
+    "invert_x": false,
+    "invert_y": false,
+    "scale_x": 1.0,
+    "scale_y": 1.0
+  },
+  "left_trigger": {
+    "deadzone": 0.02,
+    "hair": 0.11,
+    "analog": true,
+    "effect": "Normal",
+    "effect_params": []
+  },
+  "right_trigger": {
+    "deadzone": 0.02,
+    "hair": 0.09,
+    "analog": true,
+    "effect": "AutomaticGun",
+    "effect_params": [0, 8, 14]
+  },
+  "gyro": {
+    "mode": "off",
+    "activation": "l2",
+    "sensitivity": 1.5,
+    "yaw_scale": 1.0,
+    "pitch_scale": 0.9,
+    "invert_x": false,
+    "invert_y": false,
+    "smoothing": 0.12,
+    "min_delta": 0.4
+  },
+  "rumble_scale": 0.85,
+  "fn_switches_profiles": true,
+  "pass_fn_to_game": false
+}

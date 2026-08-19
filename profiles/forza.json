@@ -1,0 +1,82 @@
+{
+  "name": "Forza",
+  "emulation": "xbox360",
+  "lightbar": [0, 160, 255],
+  "player_led": 1,
+  "mute_led": false,
+  "buttons": {
+    "cross": "a",
+    "circle": "b",
+    "square": "x",
+    "triangle": "y",
+    "l1": "lb",
+    "r1": "rb",
+    "l2": "lt",
+    "r2": "rt",
+    "l3": "ls",
+    "r3": "rs",
+    "create": "back",
+    "options": "start",
+    "dpad_up": "dup",
+    "dpad_down": "ddown",
+    "dpad_left": "dleft",
+    "dpad_right": "dright",
+    "ps": "guide",
+    "touchpad": "back",
+    "mute": "none",
+    "fn_l": "none",
+    "fn_r": "none",
+    "paddle_l": "x",
+    "paddle_r": "a"
+  },
+  "left_stick": {
+    "deadzone_inner": 0.04,
+    "deadzone_outer": 1.0,
+    "anti_deadzone": 0.0,
+    "curve": "smooth",
+    "curve_exp": 1.2,
+    "invert_x": false,
+    "invert_y": false,
+    "scale_x": 1.0,
+    "scale_y": 1.0
+  },
+  "right_stick": {
+    "deadzone_inner": 0.04,
+    "deadzone_outer": 1.0,
+    "anti_deadzone": 0.0,
+    "curve": "linear",
+    "curve_exp": 1.2,
+    "invert_x": false,
+    "invert_y": false,
+    "scale_x": 1.0,
+    "scale_y": 1.0
+  },
+  "left_trigger": {
+    "deadzone": 0.01,
+    "hair": 0.0,
+    "analog": true,
+    "effect": "Resistance",
+    "effect_params": [0, 5]
+  },
+  "right_trigger": {
+    "deadzone": 0.01,
+    "hair": 0.0,
+    "analog": true,
+    "effect": "Resistance",
+    "effect_params": [0, 6]
+  },
+  "gyro": {
+    "mode": "off",
+    "activation": "always",
+    "sensitivity": 1.0,
+    "yaw_scale": 1.0,
+    "pitch_scale": 1.0,
+    "invert_x": false,
+    "invert_y": false,
+    "smoothing": 0.2,
+    "min_delta": 0.5
+  },
+  "rumble_scale": 1.0,
+  "fn_switches_profiles": true,
+  "pass_fn_to_game": false
+}

@@ -1,0 +1,25 @@
+HIDInput — send this folder/zip to a friend
+============================================
+
+1. Install Python from https://www.python.org/downloads/
+   Tick "Add python.exe to PATH"
+
+2. Install ViGEmBus (required for games):
+   https://github.com/nefarius/ViGEmBus/releases/latest
+   Run ViGEmBus_Setup_*.exe
+
+3. Unzip this whole folder. Do not run files from inside the zip.
+
+4. Double-click hidinput.bat
+   A browser opens at http://127.0.0.1:8765/
+   Leave the black window open.
+
+5. Plug in DualSense / DualSense Edge (USB-C best).
+
+6. Edge users: PlayStation Accessories → Default profile (Fn + triangle)
+   so paddles stay extra buttons.
+
+7. Optional: HidHide so the game does not see two controllers
+   https://github.com/nefarius/HidHide/releases
+
+Full steps: open README.md

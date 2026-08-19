@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HIDInput — DualSense Edge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <aside class="side">
+    <div class="brand">
+      <div class="mark">H</div>
+      <div>
+        <h1>HIDInput</h1>
+        <span>Edge unlocked</span>
+      </div>
+    </div>
+    <nav id="nav">
+      <button data-view="play" class="active">Play</button>
+      <button data-view="remap">Remap / Paddles</button>
+      <button data-view="sticks">Sticks</button>
+      <button data-view="triggers">Triggers</button>
+      <button data-view="gyro">Gyro</button>
+      <button data-view="light">Light + rumble</button>
+      <button data-view="profiles">Profiles</button>
+      <button data-view="udp">UDP / games</button>
+    </nav>
+    <div class="side-foot">
+      Sony Default profile on the pad so paddles stay extra buttons. Then bind them here.
+      Fn + △ ○ ✕ □ hops slots 1–4.
+    </div>
+  </aside>
+
+  <section class="main">
+    <header class="top">
+      <div class="pill"><i class="dot" id="dot"></i><span id="link">Searching…</span></div>
+      <div class="pill" id="edgePill">Edge</div>
+      <div class="pill"><span id="hz">0 Hz</span></div>
+      <div class="pill"><span id="batt">—</span></div>
+      <div class="spacer"></div>
+      <select id="emu">
+        <option value="xbox360">Emulate Xbox 360</option>
+        <option value="ds4">Emulate DualShock 4</option>
+        <option value="off">No emulation</option>
+      </select>
+      <button class="btn" id="reconnect">Reconnect</button>
+    </header>
+
+    <article class="view active" id="view-play">
+      <div class="grid two">
+        <div class="card">
+          <h2>Live Edge</h2>
+          <div class="pad-wrap">
+            <div class="pad" id="pad">
+              <div class="shoulders">
+                <div>
+                  <div class="sh" data-key="l1"></div>
+                  <div class="tr-bar"><i id="l2bar"></i></div>
+                </div>
+                <div>
+                  <div class="sh" data-key="r1"></div>
+                  <div class="tr-bar"><i id="r2bar"></i></div>
+                </div>
+              </div>
+              <div class="pad-body">
+                <div class="touch" data-key="touchpad"></div>
+                <div class="stick ls" id="ls"><div class="nub"></div></div>
+                <div class="stick rs" id="rs"><div class="nub"></div></div>
+                <div class="dpad">
+                  <div class="btn-h d-u" data-key="dpad_up"></div>
+                  <div class="btn-h d-d" data-key="dpad_down"></div>
+                  <div class="btn-h d-l" data-key="dpad_left"></div>
+                  <div class="btn-h d-r" data-key="dpad_right"></div>
+                </div>
+                <div class="face">
+                  <div class="btn-h b-tri" data-key="triangle">△</div>
+                  <div class="btn-h b-cir" data-key="circle">○</div>
+                  <div class="btn-h b-crs" data-key="cross">✕</div>
+                  <div class="btn-h b-sq" data-key="square">□</div>
+                </div>
+                <div class="meta">
+                  <div class="tiny" data-key="create"></div>
+                  <div class="tiny" data-key="ps"></div>
+                  <div class="tiny" data-key="options"></div>
+                  <div class="tiny" data-key="mute"></div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="back-pad">
+                <div class="fn" data-key="fn_l"><b>Fn L</b><span>L4 · stick click-in</span></div>
+                <div class="fn" data-key="fn_r"><b>Fn R</b><span>R4 · stick click-in</span></div>
+                <div class="paddle" data-key="paddle_l"><b>Paddle L</b><span>L5 · back left</span></div>
+                <div class="paddle" data-key="paddle_r"><b>Paddle R</b><span>R5 · back right</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Telemetry</h2>
+          <div class="stats" id="stats"></div>
+          <p class="warnbox" id="err"></p>
+        </div>
+      </div>
+    </article>
+
+    <article class="view" id="view-remap">
+      <div class="card">
+        <h2>Every Edge input → Xbox / key / mouse</h2>
+        <p class="warnbox">Paddles only show as their own bits if the controller is on Sony’s Default profile (Fn+△). Hardware remaps duplicate buttons and waste the extras.</p>
+        <div class="remap-grid" id="remap"></div>
+      </div>
+    </article>
+
+    <article class="view" id="view-sticks">
+      <div class="grid two">
+        <div class="card">
+          <h2>Left stick</h2>
+          <div id="lsTune"></div>
+        </div>
+        <div class="card">
+          <h2>Right stick</h2>
+          <div id="rsTune"></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="view" id="view-triggers">
+      <div class="grid two">
+        <div class="card">
+          <h2>Hair + deadzone</h2>
+          <div class="row">
+            <label class="field">L2 hair <input type="range" id="lHair" min="0" max="80" /><span id="lHairV"></span></label>
+            <label class="field">R2 hair <input type="range" id="rHair" min="0" max="80" /><span id="rHairV"></span></label>
+          </div>
+          <div class="row">
+            <label class="field">L2 deadzone <input type="range" id="lDz" min="0" max="40" /><span id="lDzV"></span></label>
+            <label class="field">R2 deadzone <input type="range" id="rDz" min="0" max="40" /><span id="rDzV"></span></label>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Adaptive effects</h2>
+          <div class="row">
+            <label class="field">Left<select id="lEff"></select></label>
+            <label class="field">Right<select id="rEff"></select></label>
+          </div>
+          <div class="grid" id="effGrid" style="grid-template-columns:repeat(auto-fill,minmax(140px,1fr));margin-top:12px"></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="view" id="view-gyro">
+      <div class="card">
+        <h2>Gyro → mouse</h2>
+        <p class="warnbox">For CoD / Ricochet titles keep this Off and bind paddles to Xbox buttons. Gyro-as-mouse + a virtual pad can look like a XIM.</p>
+        <div class="row">
+          <label class="field">Mode
+            <select id="gMode">
+              <option value="off">Off</option>
+              <option value="mouse">Mouse</option>
+            </select>
+          </label>
+          <label class="field">Activation
+            <select id="gAct">
+              <option value="always">Always</option>
+              <option value="l2">ADS L2</option>
+              <option value="r2">R2</option>
+              <option value="touch">Touchpad</option>
+              <option value="fn_l">Fn L</option>
+              <option value="paddle_l">Paddle L</option>
+            </select>
+          </label>
+          <label class="field">Sensitivity <input type="range" id="gSens" min="2" max="40" /><span id="gSensV"></span></label>
+        </div>
+      </div>
+    </article>
+
+    <article class="view" id="view-light">
+      <div class="grid two">
+        <div class="card">
+          <h2>Light bar</h2>
+          <div class="row">
+            <input class="color" type="color" id="color" />
+            <button class="btn" data-rgb="0,90,255">Blue</button>
+            <button class="btn" data-rgb="255,40,70">Crimson</button>
+            <button class="btn" data-rgb="61,255,200">Mint</button>
+            <button class="btn" data-rgb="255,180,0">Gold</button>
+          </div>
+          <label class="field" style="margin-top:12px">Player LED
+            <select id="pled">
+              <option value="1">Player 1</option>
+              <option value="2">Player 2</option>
+              <option value="3">Player 3</option>
+              <option value="4">Player 4</option>
+              <option value="0">Off</option>
+            </select>
+          </label>
+        </div>
+        <div class="card">
+          <h2>Rumble test</h2>
+          <label class="field">Left (low) <input type="range" id="rumL" min="0" max="255" value="0" /></label>
+          <label class="field">Right (high) <input type="range" id="rumR" min="0" max="255" value="0" /></label>
+        </div>
+      </div>
+    </article>
+
+    <article class="view" id="view-profiles">
+      <div class="grid two">
+        <div class="card">
+          <h2>Saved</h2>
+          <div class="row">
+            <input type="text" id="pname" placeholder="Profile name" />
+            <button class="btn primary" id="saveP">Save current</button>
+          </div>
+          <div id="plist" class="grid" style="margin-top:12px"></div>
+        </div>
+        <div class="card">
+          <h2>Fn slots — Sony-style</h2>
+          <p class="okbox">Hold either Fn and tap a face button in-game.</p>
+          <div id="slots"></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="view" id="view-udp">
+      <div class="card">
+        <h2>DSX UDP on 127.0.0.1</h2>
+        <p>Game mods that talk to DSX (Forza, GTA wrappers, etc.) can hit this listener. Port file written to <code>C:\Temp\DualSenseX\DualSenseX_PortNumber.txt</code>.</p>
+        <div class="row">
+          <label class="field">Port <input type="number" id="uport" value="6969" /></label>
+          <button class="btn primary" id="uon">Restart listener</button>
+        </div>
+        <pre id="ulog" style="background:#0b0e14;padding:12px;border-radius:10px;overflow:auto;min-height:80px;color:#8b95a8"></pre>
+        <p class="warnbox">No turbo, no recoil scripts, no macros. Paddles, hair triggers, curves, adaptive resistance — that’s the kit.</p>
+      </div>
+    </article>
+  </section>
+  <script src="app.js"></script>
+</body>
+</html>
